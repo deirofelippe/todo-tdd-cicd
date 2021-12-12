@@ -39,23 +39,20 @@ describe('todoRepository', () => {
          expect(todoRepository.schedule[functionName].calledOnce).to.be.ok
       })
 
-      it('should call insertOne from lokijs', () => { })
+      it('should call insertOne from lokijs', () => {
+         const functionName = 'insertOne'
+         const expectReturn = true
+
+         sandbox.stub(
+            todoRepository.schedule,
+            functionName
+         ).returns(expectReturn)
+
+         const data = { name: 'Felippe' }
+         const result = todoRepository.create(data)
+
+         expect(result).to.be.ok
+         expect(todoRepository.schedule[functionName].calledOnceWithExactly(data)).to.be.ok
+      })
    })
 })
-
-/*
-list [
-  {
-    name: 'XuxaDaSilva',
-    age: 90,
-    meta: { revision: 0, created: 1639263839548, version: 0 },
-    '$loki': 1
-  },
-  {
-    name: 'Joaozinho',
-    age: 90,
-    meta: { revision: 0, created: 1639263839549, version: 0 },
-    '$loki': 2
-  }
-]
-*/
