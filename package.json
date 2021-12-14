@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "lint": "npx eslint src",
     "test": "npx mocha --parallel --exit test/",
     "test:dev": "npx mocha test/ -w",
     "test:cov-rep": "npx nyc --reporter=html npm test",
