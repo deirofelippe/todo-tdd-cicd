@@ -11,7 +11,7 @@ class TodoRepository {
    }
 
    create(data) {
-      return !this.schedule.insertOne(data)
+      return this.schedule.insertOne(data)
    }
 }
 
