@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
     "test": "npx mocha --parallel --exit test/",
     "test:dev": "npx mocha test/ -w",
     "test:cov-rep": "npx nyc --reporter=html npm test",
@@ -19,5 +20,8 @@
     "mocha": "^8.4.0",
     "nyc": "^15.1.0",
     "sinon": "^9.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.1"
   }
 }
