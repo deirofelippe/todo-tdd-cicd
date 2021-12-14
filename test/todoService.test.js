@@ -10,6 +10,8 @@ describe('todoService', () => {
       sandbox = createSandbox()
    })
 
+   afterEach(() => sandbox.restore())
+
    describe('#list', () => {
       const mockDatabase = [
          {
@@ -94,6 +96,30 @@ describe('todoService', () => {
          expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok
       })
 
-      it('should save todo item with pending status')
+      it('should save todo item with pending status', () => {
+         const properties = {
+            text: 'I must walk my dog',
+            when: new Date('2020-12-10 12:00:00 GMT-0')
+         }
+         const expectedId = '000001'
+
+         const uuid = require('uuid')
+         const fakeUUID = sandbox.fake.returns(expectedId)
+         sandbox.replace(uuid, 'v4', fakeUUID)
+
+         const data = new Todo(properties)
+
+         const today = new Date('2020-12-02')
+         sandbox.useFakeTimers(today.getTime())
+
+         todoService.create(data)
+
+         const expectedCallWith = {
+            ...data,
+            status: 'pending'
+         }
+
+         expect(todoService.todoRepository.create.calledOnceWithExactly(expectedCallWith)).to.be.ok
+      })
    })
 })
