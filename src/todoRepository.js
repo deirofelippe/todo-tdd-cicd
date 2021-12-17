@@ -1,21 +1,21 @@
-const loki = require('lokijs')
+const loki = require("lokijs");
 
 class TodoRepository {
    constructor() {
-      const db = new loki('todo', {})
-      this.schedule = db.addCollection('schedule')
+      const db = new loki("todo", {});
+      this.schedule = db.addCollection("schedule");
    }
 
    list() {
-      return this.schedule.find()
+      return this.schedule.find();
    }
 
    create(data) {
-      return this.schedule.insertOne(data)
+      return this.schedule.insertOne(data);
    }
 }
 
-module.exports = TodoRepository
+module.exports = TodoRepository;
 
 // const c = new TodoRepository()
 
@@ -23,4 +23,3 @@ module.exports = TodoRepository
 // c.create({ name: "Joaozinho", age: 90 })
 
 // console.log('list', c.list());
-
