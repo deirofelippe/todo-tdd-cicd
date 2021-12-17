@@ -9,6 +9,6 @@ RUN apk update \
       -p https://github.com/hlissner/zsh-autopair
 
 COPY package*.json ./
-RUN npm install 
+RUN npm install
 COPY ./ ./
 CMD tail -f /dev/null

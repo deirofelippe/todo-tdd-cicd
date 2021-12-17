@@ -24,8 +24,8 @@ jobs:
       - run: npm install
       - run: npm run test
 
-      # - name: Check linting
-      #   run: npm run lint
+      - name: Check linting
+        run: npm run lint
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -53,8 +53,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            felippedeiro/todo-tdd:latest
-            felippedeiro/todo-tdd:${{ github.run_number }}
+            felippedeiro/todo-tdd-cicd:latest
+            felippedeiro/todo-tdd-cicd:${{ github.run_number }}
 
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
